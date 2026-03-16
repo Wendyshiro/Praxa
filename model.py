@@ -3,6 +3,7 @@ from typing import Optional, Any
 import os
 from dotenv import load_dotenv
 
+
 load_dotenv()
 api_key = os.getenv("OPENROUTER_API_KEY")
 
