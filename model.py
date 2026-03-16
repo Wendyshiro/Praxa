@@ -1,8 +1,10 @@
 from langchain_community.chat_models import ChatOpenAI
 from typing import Optional, Any
 import os
+from dotenv import load_dotenv
 
-os.environ["OPENROUTER_API_KEY"] = "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"
+load_dotenv()
+api_key = os.getenv("OPENROUTER_API_KEY")
 
 class ChatModel(ChatOpenAI):
     """
