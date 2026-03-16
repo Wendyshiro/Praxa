@@ -2,7 +2,7 @@ from langchain_community.chat_models import ChatOpenAI
 from typing import Optional, Any
 import os
 
-os.environ["OPENROUTER_API_KEY"] = "<your key here>"
+os.environ["OPENROUTER_API_KEY"] = "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"
 
 class ChatModel(ChatOpenAI):
     """
@@ -22,7 +22,7 @@ class ChatModel(ChatOpenAI):
             **kwargs
         )
 
-def get_model(model_name: str = "<default model>") -> ChatModel:
+def get_model(model_name: str = "google/gemma-3-27b-it:free") -> ChatModel:
     """
     Gets a reference to a model
     
@@ -39,36 +39,38 @@ def get_model(model_name: str = "<default model>") -> ChatModel:
 
 if __name__ == "__main__":
 # when run as a script, run some tests to demonstrate capabilities
-#    model = get_model()
-#    from langchain_core.messages import SystemMessage, HumanMessage
-#    from langchain.prompts import ChatPromptTemplate
+    model = get_model()
+    from langchain_core.messages import SystemMessage, HumanMessage
+    from langchain.prompts import ChatPromptTemplate
 
-#    ???
-#    ???
-#    ???
-#    ???
+    prompt_template = ChatPromptTemplate([
+        ("human", "You are a helpful assistant"),
+        ("human", "What is {playwright}'s most recent play")
+    ])
+    
+    response = model.invoke(
+        [HumanMessage("You are a helpful assistant."),
+         HumanMessage("What are some plays by Tawfiq al-Hakim?")])
+    print(response.content)
+    print("----------")
+    response = model.invoke(
+        [HumanMessage("You are a helpful assistant."),
+         HumanMessage("What is Ryan Calais Camerons's most recent play?")])
+    print(response.content)
+    print("----------")
+    response = model.invoke(
+        [HumanMessage("You are a helpful assistant."),
+         HumanMessage("What Broadway shows have more than 10,000 performances?")])
+    print(response.content)
 
-#    response = model.invoke(
-#        [???("You are a helpful assistant."),
-#         ???("What are some plays by Tawfiq al-Hakim?")])
-#    print(response.content)
-#    print("----------")
-#    response = model.invoke(
-#        [???("You are a helpful assistant."),
-#         ???("What is Ryan Calais Camerons's most recent play?")])
-#    print(response.content)
-#    print("----------")
-#    response = model.invoke(
-#        [???("You are a helpful assistant."),
-#         ???("What Broadway shows have more than 10,000 performances?")])
-#    print(response.content)
+    print(prompt_template.invoke({"playwright": "Ryan Calais Cameron"}))
+    response = model.invoke(prompt_template.invoke({"playwright": "Ryan Calais Cameron"}))
+    print(response.content)
 
-#    print(prompt_template.invoke({"playwright": "Ryan Calais Cameron"}))
-#    response = model.invoke(prompt_template.invoke({"playwright": "Ryan Calais Cameron"}))
-#    print(response.content)
+    chain = prompt_template | model
+    response = chain.invoke(
+        {"playwright": "Ryan Calais Cameron"})
+    print(response)
 
-#    chain = ???
-#    response = ???{"playwright": "Ryan Calais Cameron"})
-#    print(response.content)
 
     pass
