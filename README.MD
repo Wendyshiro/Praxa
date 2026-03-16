@@ -1,5 +1,11 @@
 # Praxa 🎭
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenRouter-412991?style=for-the-badge&logo=openai&logoColor=white)
+![RAG](https://img.shields.io/badge/RAG-Pipeline-blue?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
 A RAG-powered chatbot for answering questions about West End and Broadway theatre. Praxa combines a curated PDF knowledge base with a retrieval-augmented generation pipeline to provide accurate, source-backed answers about shows, productions, venues, and the people behind them.
 
 ---
