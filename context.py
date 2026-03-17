@@ -107,21 +107,21 @@ def get_vector_store(embedding_model: Embeddings = get_embedding_model(), path: 
     pass
 
 if __name__ == "__main__":
-    # when run as a script, run some tests to demonstrate capabilities
-    #pdfs = (
-       #{ "url": "https://quanticedu.github.io/praxa/Longest Running Shows on Broadway 2025.pdf",
-        #  "filename": "Longest Running Shows on Broadway.pdf" },
+    # Download context data from pdfs
+    pdfs = (
+       { "url": "https://quanticedu.github.io/praxa/Longest Running Shows on Broadway 2025.pdf",
+          "filename": "Longest Running Shows on Broadway.pdf" },
 
-       #{ "url": "https://quanticedu.github.io/praxa/Every play and musical coming to the West End in 2025.pdf",
-        #  "filename": "Every play and musical coming to the West End in 2025.pdf" })
-    #download_context_data(pdfs)
+       { "url": "https://quanticedu.github.io/praxa/Every play and musical coming to the West End in 2025.pdf",
+          "filename": "Every play and musical coming to the West End in 2025.pdf" })
+    download_context_data(pdfs)
     context_data = load_context_data()
     chunks = chunk_context_data(context_data)
     embedding_model = get_embedding_model()
     vector_store = create_vector_store(chunks, embedding_model)
 
-    #for page in context_data:
-        #print(page)
+    for page in context_data:
+        print(page)
 
 
     for num, chunk in enumerate(chunks):
@@ -130,10 +130,10 @@ if __name__ == "__main__":
         print(f"Length: {len(chunk.page_content)}")
         print(f"Metadata: {chunk.metadata}")
         print(f"Content: {chunk.page_content}")
-    #embedding = embedding_model.embed_query("This is a test sentence.")
-    #print(f"Embedding length: {len(embedding)}")
-    #embedding = embedding_model.embed_query("This is a longer test sentence.")
-    #print(f"Embedding length: {len(embedding)}")
+    embedding = embedding_model.embed_query("This is a test sentence.")
+    print(f"Embedding length: {len(embedding)}")
+    embedding = embedding_model.embed_query("This is a longer test sentence.")
+    print(f"Embedding length: {len(embedding)}")
     
     retrieved_chunks = vector_store.similarity_search("A play written by Ryan Calais Cameron.")
     print(f"Query retrieved {len(retrieved_chunks)} chunks.")
