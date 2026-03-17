@@ -41,7 +41,7 @@ def get_model(model_name: str = "google/gemma-3-27b-it:free") -> ChatModel:
     )
 
 if __name__ == "__main__":
-# when run as a script, run some tests to demonstrate capabilities
+
     model = get_model()
     from langchain_core.messages import SystemMessage, HumanMessage
     from langchain.prompts import ChatPromptTemplate
