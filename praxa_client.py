@@ -3,8 +3,17 @@ import praxa_rag
 import random
 import time
 
+st.set_page_config(
+    page_title="Praxa",
+    page_icon="🎭",
+    layout="centered"
+)
 
-st.title("Praxa")
+st.title("🎭 Praxa")
+st.caption("Ask me anything about West End and Broadway theatre.")
+with st.sidebar:
+    st.markdown("### About Praxa")
+    st.markdown("Praxa uses RAG to answer questions about West End and Broadway theatre, grounded in real source documents.")
 
 # Initialize chat history
 if "messages" not in st.session_state:
