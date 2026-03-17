@@ -86,27 +86,16 @@ OPENROUTER_API_KEY=your_api_key_here
 
 You can get a free API key at [openrouter.ai](https://openrouter.ai).
 
-### 5. Add your PDF documents
+### 5. Build the vector index
 
-
-Place the following PDFs inside a `context_data/` directory:
-
-- `westend_2025.pdf` — plays and musicals coming to the West End in 2025
-- `broadway_longest_running.pdf` — longest-running shows in Broadway history
-
-> These files are provided via the course repository. If you are a student
-> on this course, download them from your school's repo and place them here.
-> External users will need to substitute their own theatre reference PDFs.
-
-### 6. Build the vector index
-
-Run the context module once to embed your PDFs and populate the Chroma database:
-
+Run the following command to set up Praxa's knowledge base. This will
+automatically download the required PDFs and build the Chroma vector index:
 ```bash
 python context.py
 ```
 
-This only needs to be done once, or again whenever you add new documents.
+This only needs to be done once. The PDFs will be saved to `context_data/`
+and the vector index to `chromadb/`.
 
 ---
 
