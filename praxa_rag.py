@@ -47,15 +47,15 @@ def answer_and_sources(question: str) -> dict[str, str]:
             "sources": sources}
 
 if __name__ == "__main__":
-# when run as a script, run some tests to demonstrate capabilities
-    #docs = retriever.invoke("What is Ryan Calais Cameron's most recent play?")
-    #print(f"Found {len(docs)} documents:")
 
-    #for doc in docs:
-        #print("-----")
-        #print(doc)
+    docs = retriever.invoke("What is Ryan Calais Cameron's most recent play?")
+    print(f"Found {len(docs)} documents:")
 
-#    print(question_and_docs.invoke("What is Ryan Calais Cameron's most recent play?"))
+    for doc in docs:
+        print("-----")
+        print(doc)
+
+    print(question_and_docs.invoke("What is Ryan Calais Cameron's most recent play?"))
 
     my_dict = {
         "question": "How much wood would a woodchuck chuck if a woodchuck could chuck wood?",
@@ -66,10 +66,10 @@ if __name__ == "__main__":
     print(type(add_length))
     print(add_length.invoke(my_dict))
 
-    #complete_prompt_chain = question_and_docs | context | prompt_template
-    #result = complete_prompt_chain.invoke("What is Ryan Calais Cameron's most recent play?")
-    #print(type(result))
-    #print(result)
+    complete_prompt_chain = question_and_docs | context | prompt_template
+    result = complete_prompt_chain.invoke("What is Ryan Calais Cameron's most recent play?")
+    print(type(result))
+    print(result)
 
     chain = question_and_docs | context | prompt_template | model
     #result = chain.invoke("What is Ryan Calais Cameron's most recent play?")
