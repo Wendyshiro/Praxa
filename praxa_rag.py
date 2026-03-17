@@ -72,15 +72,15 @@ if __name__ == "__main__":
     print(result)
 
     chain = question_and_docs | context | prompt_template | model
-    #result = chain.invoke("What is Ryan Calais Cameron's most recent play?")
-    #print(result.content)
+    result = chain.invoke("What is Ryan Calais Cameron's most recent play?")
+    print(result.content)
 
-    #result = chain_with_sources.invoke("What Broadway shows have had more than 10,000 performances?")
-    #print("The docs used in this answer:")
-    #print("\n".join(doc.metadata.__repr__() for doc in result["context_docs"]))
-    #print("-----")
-    #print("The answer:")
-    #print(result["answer"].content)
+    result = chain_with_sources.invoke("What Broadway shows have had more than 10,000 performances?")
+    print("The docs used in this answer:")
+    print("\n".join(doc.metadata.__repr__() for doc in result["context_docs"]))
+    print("-----")
+    print("The answer:")
+    print(result["answer"].content)
 
     print(answer_and_sources("What is Ryan Calais Cameron's most recent play?"))
 
